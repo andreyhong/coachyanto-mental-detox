@@ -22,7 +22,26 @@ import {
   Layers,
   LayoutDashboard,
   MessageCircle,
+  Image as ImageIcon,
 } from "lucide-react";
+
+const natureScenes = [
+  {
+    name: "Hutan Pinus & Kabut",
+    icon: "🌲",
+    image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=2560&q=85",
+  },
+  {
+    name: "Hutan Bambu Zen",
+    icon: "🎋",
+    image: "https://images.unsplash.com/photo-1528164344705-475426879c0d?auto=format&fit=crop&w=2560&q=85",
+  },
+  {
+    name: "Danau Tenang & Gunung",
+    icon: "🏔️",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2560&q=85",
+  },
+];
 
 const masterclassGroups: GlassNavGroup[] = [
   {
@@ -61,6 +80,7 @@ export function App() {
   const [activeTab, setActiveTab] = useState<"redesign" | "demo">("redesign");
   const [isDark, setIsDark] = useState<boolean>(true);
   const [activeId, setActiveId] = useState<string>("overview");
+  const [currentSceneIdx, setCurrentSceneIdx] = useState<number>(0);
 
   // Sync theme with document class
   useEffect(() => {
@@ -88,50 +108,86 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-500 font-sans relative selection:bg-[#3e664c] selection:text-[#f7faf8]">
-      {/* Top Utility Bar */}
-      <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-background/80 border-b border-[#2b3c31]/60 px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4 shadow-sm">
+    <div className="min-h-screen text-foreground transition-colors duration-500 font-sans relative selection:bg-[#3e664c] selection:text-[#f7faf8]">
+      {/* ================= IMMERSIVE NATURE BACKGROUND ================= */}
+      <div className="fixed inset-0 pointer-events-none -z-20 overflow-hidden">
+        <img
+          key={natureScenes[currentSceneIdx].image}
+          src={natureScenes[currentSceneIdx].image}
+          alt={natureScenes[currentSceneIdx].name}
+          className="w-full h-full object-cover object-center opacity-75 dark:opacity-80 transition-opacity duration-1000 transform scale-105 zen-nature-pulse"
+        />
+        {/* Soft Vignette Overlay ensuring readability while keeping nature vivid */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 dark:from-black/55 dark:via-black/35 dark:to-black/65" />
+      </div>
+
+      {/* Top Utility Bar with Glass Effect */}
+      <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-black/35 border-b border-white/15 px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4 shadow-lg">
         <div className="flex items-center gap-3.5">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3e664c] via-[#4d7b5d] to-[#2d4d38] border border-[#6b9979]/40 flex items-center justify-center text-[#f7faf8] font-black text-base shadow-md shadow-[#1e3325]/30 cursor-pointer transition-all duration-300 hover:scale-115 hover:rotate-6 hover:shadow-lg">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3e664c] via-[#4d7b5d] to-[#2d4d38] border border-white/30 flex items-center justify-center text-[#f7faf8] font-black text-base shadow-lg shadow-black/40 cursor-pointer transition-all duration-300 hover:scale-115 hover:rotate-6">
             CY
           </div>
           <div>
-            <h1 className="text-sm font-bold tracking-tight text-foreground leading-none flex items-center gap-1.5">
+            <h1 className="text-sm font-bold tracking-tight text-white leading-none flex items-center gap-1.5 drop-shadow">
               <span>Coach Yanto</span>
-              <span className="text-[#8fb49c] font-normal text-xs">• Mind Mastery Academy</span>
+              <span className="text-[#a3c9b0] font-normal text-xs">• Mind Mastery Academy</span>
             </h1>
-            <p className="text-[11px] text-muted-foreground mt-0.5 font-normal">
-              Mental Detox Masterclass – Zen Redesign
+            <p className="text-[11px] text-white/70 mt-0.5 font-normal">
+              Mental Detox Masterclass – Glassmorphism Zen
             </p>
           </div>
         </div>
 
-        {/* View Switcher & Actions */}
+        {/* View Switcher, Nature Scene Selector & Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <div className="flex items-center p-1 rounded-xl bg-gradient-to-r from-[#1b2620]/90 to-[#141d18]/90 border border-[#2e4034]/70 text-xs font-semibold">
+          {/* Interactive Nature Scene Switcher */}
+          <div className="hidden md:flex items-center p-1 rounded-xl bg-black/40 border border-white/20 text-xs font-semibold backdrop-blur-md">
+            <span className="px-2 text-white/60 text-[11px] flex items-center gap-1">
+              <ImageIcon className="w-3.5 h-3.5" /> Alam:
+            </span>
+            {natureScenes.map((scene, idx) => (
+              <button
+                key={scene.name}
+                type="button"
+                onClick={() => setCurrentSceneIdx(idx)}
+                className={`px-2.5 py-1 rounded-lg transition-all duration-200 cursor-pointer text-xs flex items-center gap-1 ${
+                  currentSceneIdx === idx
+                    ? "bg-white/20 text-white font-bold shadow-sm border border-white/30"
+                    : "text-white/70 hover:text-white hover:bg-white/10"
+                }`}
+                title={scene.name}
+              >
+                <span>{scene.icon}</span>
+                <span className="hidden lg:inline">{scene.name.split(" ")[0]}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Mode Toggle Button */}
+          <div className="flex items-center p-1 rounded-xl bg-black/40 border border-white/20 text-xs font-semibold backdrop-blur-md">
             <button
               type="button"
               onClick={() => setActiveTab("redesign")}
               className={`px-3 py-1.5 rounded-lg transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                 activeTab === "redesign"
-                  ? "bg-gradient-to-r from-[#3e664c] to-[#4d7b5d] text-[#f7faf8] shadow-sm border border-[#6ea07d]/40"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-gradient-to-r from-[#3e664c] to-[#4d7b5d] text-[#f7faf8] shadow-md border border-white/20"
+                  : "text-white/70 hover:text-white"
               }`}
             >
-              <LayoutDashboard className="w-3.5 h-3.5 transition-transform duration-200 group-hover:scale-110" />
-              <span>Redesign Website</span>
+              <LayoutDashboard className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Website</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("demo")}
               className={`px-3 py-1.5 rounded-lg transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                 activeTab === "demo"
-                  ? "bg-gradient-to-r from-[#3e664c] to-[#4d7b5d] text-[#f7faf8] shadow-sm border border-[#6ea07d]/40"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-gradient-to-r from-[#3e664c] to-[#4d7b5d] text-[#f7faf8] shadow-md border border-white/20"
+                  : "text-white/70 hover:text-white"
               }`}
             >
-              <Layers className="w-3.5 h-3.5 transition-transform duration-200 group-hover:scale-110" />
-              <span>Component Demo</span>
+              <Layers className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Demo</span>
             </button>
           </div>
 
@@ -139,12 +195,12 @@ export function App() {
             type="button"
             onClick={() => setIsDark(!isDark)}
             aria-label="Toggle Dark/Light Mode"
-            className="p-2.5 rounded-xl border border-[#2e4034]/70 bg-gradient-to-br from-[#1b2620] to-[#141d18] hover:border-[#4d6f58] text-foreground transition-all duration-300 hover:scale-110 hover:rotate-12 cursor-pointer"
+            className="p-2.5 rounded-xl border border-white/20 bg-black/35 hover:bg-black/50 text-white transition-all duration-300 hover:scale-110 hover:rotate-12 cursor-pointer backdrop-blur-md"
           >
             {isDark ? (
-              <Sun className="w-4 h-4 text-[#baa682]" />
+              <Sun className="w-4 h-4 text-[#d4b27d]" />
             ) : (
-              <Moon className="w-4 h-4 text-[#3e664c]" />
+              <Moon className="w-4 h-4 text-[#a3c9b0]" />
             )}
           </button>
 
@@ -152,7 +208,7 @@ export function App() {
             href="https://wa.me/628118178971?text=Halo%20Coach%20Yanto%20saya%20tertarik%20dengan%20Mental%20Detox%20Masterclass"
             target="_blank"
             rel="noreferrer"
-            className="group hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#3e664c] via-[#4d7b5d] to-[#3a5d46] hover:from-[#497558] hover:via-[#598c6a] hover:to-[#426a50] text-[#f7faf8] font-semibold text-xs shadow-md shadow-[#1e3325]/30 border border-[#6ea07d]/35 transition-all duration-300"
+            className="group hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#3e664c] via-[#4d7b5d] to-[#3a5d46] hover:from-[#497558] hover:via-[#598c6a] hover:to-[#426a50] text-[#f7faf8] font-semibold text-xs shadow-lg shadow-black/40 border border-white/25 transition-all duration-300"
           >
             <MessageCircle className="w-3.5 h-3.5 transition-transform duration-300 group-hover:scale-125 group-hover:-rotate-12" />
             <span>Chat WhatsApp</span>
@@ -167,17 +223,7 @@ export function App() {
         </div>
       ) : (
         <div className="relative min-h-[calc(100vh-65px)] flex flex-col lg:flex-row items-start justify-start">
-          {/* Zen Ambient Background Imagery with gentle mist overlay */}
-          <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1920&q=80"
-              alt="Zen Bamboo Mist Visual"
-              className="w-full h-full object-cover opacity-10 filter blur-md dark:opacity-15 transition-opacity duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/92 via-background/96 to-background" />
-          </div>
-
-          {/* Desktop Left Glass Sidebar */}
+          {/* Desktop Left Glass Sidebar (True Frosted Glass) */}
           <aside className="hidden lg:block sticky top-[76px] h-[calc(100vh-92px)] p-4 flex-shrink-0 z-40">
             <LiquidGlassExpandableSidebar
               groups={masterclassGroups}
@@ -195,18 +241,18 @@ export function App() {
               onNavigate={handleNavigate}
               defaultExpanded={true}
               theme={isDark ? "dark" : "light"}
-              accent="#6c9a7d"
+              accent="#a3c9b0"
               glass={{
-                blur: 24,
-                opacity: 0.15,
-                saturation: 1.25,
-                edge: 0.85,
-                distortion: 22,
+                blur: 28,
+                opacity: 0.16,
+                saturation: 1.4,
+                edge: 0.88,
+                distortion: 25,
               }}
             />
           </aside>
 
-          {/* Main Website View */}
+          {/* Main Website View with True Glassmorphic Panels */}
           <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-8 py-6">
             <MentalDetoxWebsite />
           </main>
