@@ -115,7 +115,8 @@ export function App() {
           key={natureScenes[currentSceneIdx].image}
           src={natureScenes[currentSceneIdx].image}
           alt={natureScenes[currentSceneIdx].name}
-          className="w-full h-full object-cover object-center opacity-50 transition-opacity duration-1000 transform scale-105 zen-nature-pulse"
+          style={{ opacity: 0.5 }}
+          className="w-full h-full object-cover object-center transition-opacity duration-700 transform scale-105"
         />
         {/* Balanced Wash Overlay ensuring 100% text readability in both Light and Dark modes */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#f8f7f4]/88 via-[#f8f7f4]/76 to-[#f8f7f4]/92 dark:from-black/75 dark:via-black/60 dark:to-black/82 transition-colors duration-500" />

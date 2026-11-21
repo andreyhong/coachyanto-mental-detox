@@ -449,7 +449,7 @@ export function MentalDetoxWebsite() {
 
           <div className="space-y-8 text-center max-w-xl mx-auto">
             <div className="space-y-2">
-              <span className="text-xs font-bold text-primary uppercase tracking-wider">
+              <span className="text-xs font-bold text-primary dark:text-[#a3c9b0] uppercase tracking-wider block">
                 Investasi Terbaik Dimulai Dari Cara Anda Merawat Pikiran
               </span>
               <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-foreground">
@@ -462,7 +462,7 @@ export function MentalDetoxWebsite() {
 
             <div className="p-6 rounded-2xl bg-secondary/80 dark:bg-black/40 border border-border/80 dark:border-white/20 space-y-2 backdrop-blur-md shadow-inner">
               <div className="text-xs text-foreground/60 line-through">Harga Normal: Rp 1.500.000</div>
-              <div className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-[#173021] to-[#2d523a] dark:from-[#ffffff] dark:to-[#a3c9b0] bg-clip-text text-transparent">
+              <div className="text-3xl sm:text-4xl font-black text-[#173021] dark:text-[#f7faf8]">
                 Penawaran Khusus Batch 12
               </div>
               <p className="text-xs text-foreground/80 font-normal">
