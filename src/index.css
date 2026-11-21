@@ -5,73 +5,73 @@
 @layer base {
   :root {
     /* Zen Light: Washi Paper, River Pebble, Matcha, Hinoki Wood */
-    --background: 42 20% 97%;       /* #f8f7f4 */
-    --foreground: 155 18% 16%;      /* #222d26 */
-    --card: 40 25% 99%;
-    --card-foreground: 155 18% 16%;
-    --popover: 40 25% 99%;
-    --popover-foreground: 155 18% 16%;
-    --primary: 144 24% 38%;         /* #486d55 - Calm Matcha/Forest Moss */
+    --background: 42 20% 97%;          /* #f8f7f4 */
+    --foreground: 155 24% 12%;         /* #17261d - High contrast deep forest ink */
+    --card: 0 0% 100%;
+    --card-foreground: 155 24% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 155 24% 12%;
+    --primary: 144 28% 34%;            /* #3e664c - Rich Matcha/Forest Moss */
     --primary-foreground: 40 20% 98%;
-    --secondary: 40 14% 92%;        /* #ece8e1 */
-    --secondary-foreground: 155 18% 18%;
-    --muted: 40 12% 90%;
-    --muted-foreground: 155 10% 46%;
-    --accent: 38 30% 50%;           /* #a58957 */
+    --secondary: 40 16% 92%;           /* #ede9e1 */
+    --secondary-foreground: 155 24% 14%;
+    --muted: 40 14% 90%;
+    --muted-foreground: 155 14% 35%;   /* #4c6655 - Clear readable dark sage */
+    --accent: 38 34% 44%;              /* #967845 - Rich Sandalwood / Cedar */
     --accent-foreground: 40 20% 98%;
-    --destructive: 12 36% 48%;
+    --destructive: 12 40% 45%;         /* #a14c3e - Terracotta Clay */
     --destructive-foreground: 40 20% 98%;
-    --border: 40 15% 86%;
-    --input: 40 15% 86%;
-    --ring: 144 24% 38%;
+    --border: 155 12% 82%;             /* #cbd6ce */
+    --input: 155 12% 82%;
+    --ring: 144 28% 34%;
     --radius: 1rem;
 
     /* Semantic color mappings for Liquid Glass in Zen Light */
     --color-background: #f8f7f4;
-    --color-foreground: #222d26;
-    --color-card: rgba(254, 253, 250, 0.65);
-    --color-card-foreground: #222d26;
-    --color-primary: #486d55;
+    --color-foreground: #17261d;
+    --color-card: rgba(255, 255, 255, 0.85);
+    --color-card-foreground: #17261d;
+    --color-primary: #3e664c;
     --color-primary-foreground: #faf9f6;
-    --color-border: rgba(255, 255, 255, 0.55);
-    --color-ring: #486d55;
+    --color-border: rgba(0, 0, 0, 0.1);
+    --color-ring: #3e664c;
     --color-glass-highlight: rgba(255, 255, 255, 0.95);
-    --color-glass-shadow: rgba(34, 45, 38, 0.12);
+    --color-glass-shadow: rgba(23, 38, 29, 0.12);
   }
 
   .dark {
     /* Zen Dark: Deep Moss Slate, River Stone Charcoal, Soft Tea Mist */
-    --background: 155 14% 7%;        /* #0f1512 */
-    --foreground: 120 12% 92%;       /* #e8efe9 */
-    --card: 155 16% 10%;             /* #141d18 */
-    --card-foreground: 120 12% 92%;
+    --background: 155 14% 7%;           /* #0f1512 */
+    --foreground: 120 12% 95%;          /* #f0f5f1 - High contrast bright mist linen */
+    --card: 155 16% 10%;                /* #141d18 */
+    --card-foreground: 120 12% 95%;
     --popover: 155 16% 10%;
-    --popover-foreground: 120 12% 92%;
-    --primary: 144 22% 48%;          /* #608d70 */
+    --popover-foreground: 120 12% 95%;
+    --primary: 144 24% 52%;             /* #6ea380 - Calming Bamboo Moss */
     --primary-foreground: 155 14% 7%;
-    --secondary: 155 12% 14%;
-    --secondary-foreground: 120 12% 92%;
+    --secondary: 155 14% 15%;           /* #202b24 */
+    --secondary-foreground: 120 12% 95%;
     --muted: 155 10% 15%;
-    --muted-foreground: 140 10% 64%;
-    --accent: 38 24% 62%;            /* #baa685 */
+    --muted-foreground: 140 10% 72%;    /* #abbab0 - Highly readable soft mist */
+    --accent: 38 28% 66%;               /* #c9b798 - Sandalwood Warmth */
     --accent-foreground: 155 14% 7%;
-    --destructive: 12 34% 54%;
+    --destructive: 12 38% 58%;          /* #c47366 */
     --destructive-foreground: 120 12% 95%;
-    --border: 155 12% 17%;
-    --input: 155 12% 17%;
-    --ring: 144 22% 48%;
+    --border: 155 12% 20%;              /* #2b3931 */
+    --input: 155 12% 20%;
+    --ring: 144 24% 52%;
 
     /* Semantic color mappings for Liquid Glass in Zen Dark */
     --color-background: #0f1512;
-    --color-foreground: #e8efe9;
-    --color-card: rgba(18, 28, 22, 0.48);
-    --color-card-foreground: #e8efe9;
-    --color-primary: #6c9a7d;
+    --color-foreground: #f0f5f1;
+    --color-card: rgba(18, 28, 22, 0.65);
+    --color-card-foreground: #f0f5f1;
+    --color-primary: #6ea380;
     --color-primary-foreground: #0f1512;
-    --color-border: rgba(255, 255, 255, 0.15);
-    --color-ring: #6c9a7d;
-    --color-glass-highlight: rgba(255, 255, 255, 0.25);
-    --color-glass-shadow: rgba(0, 0, 0, 0.55);
+    --color-border: rgba(255, 255, 255, 0.16);
+    --color-ring: #6ea380;
+    --color-glass-highlight: rgba(255, 255, 255, 0.28);
+    --color-glass-shadow: rgba(0, 0, 0, 0.65);
   }
 }
 
@@ -87,14 +87,14 @@
 
 /* ================= TRUE LIQUID GLASSMORPHISM STYLING ================= */
 
-/* Premium Frosted Glass Panel */
+/* Premium Frosted Glass Panel with High Contrast in Both Modes */
 .zen-glass {
-  background: rgba(16, 26, 20, 0.42);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(16, 26, 20, 0.68);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 
-    0 16px 40px 0 rgba(0, 0, 0, 0.42),
+    0 16px 40px 0 rgba(0, 0, 0, 0.45),
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
     inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -102,30 +102,30 @@
 }
 
 .zen-glass:hover {
-  background: rgba(22, 36, 28, 0.54);
-  border-color: rgba(255, 255, 255, 0.26);
+  background: rgba(22, 36, 28, 0.78);
+  border-color: rgba(255, 255, 255, 0.28);
   box-shadow: 
     0 24px 50px -12px rgba(0, 0, 0, 0.55),
-    0 0 30px rgba(132, 185, 150, 0.2),
+    0 0 30px rgba(132, 185, 150, 0.22),
     inset 0 1px 2px 0 rgba(255, 255, 255, 0.35);
   transform: translateY(-3px);
 }
 
 :root:not(.dark) .zen-glass {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 
-    0 16px 40px 0 rgba(28, 43, 33, 0.1),
-    inset 0 1px 2px 0 rgba(255, 255, 255, 0.9);
+    0 16px 40px 0 rgba(23, 38, 29, 0.1),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.95);
 }
 
 :root:not(.dark) .zen-glass:hover {
-  background: rgba(255, 255, 255, 0.82);
-  border-color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(0, 0, 0, 0.14);
   box-shadow: 
-    0 24px 50px -12px rgba(28, 43, 33, 0.18),
+    0 24px 50px -12px rgba(23, 38, 29, 0.15),
     inset 0 1px 2px 0 rgba(255, 255, 255, 1);
   transform: translateY(-3px);
 }
@@ -145,7 +145,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.1),
     transparent
   );
   transform: skewX(-20deg);
@@ -179,14 +179,14 @@
 @keyframes zenPulse {
   0%, 100% {
     transform: scale(1);
-    opacity: 0.6;
+    opacity: 0.5;
   }
   50% {
-    transform: scale(1.08);
-    opacity: 0.9;
+    transform: scale(1.05);
+    opacity: 0.5;
   }
 }
 
 .zen-nature-pulse {
-  animation: zenPulse 7s ease-in-out infinite;
+  animation: zenPulse 8s ease-in-out infinite;
 }

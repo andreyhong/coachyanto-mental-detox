@@ -108,32 +108,32 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen text-foreground transition-colors duration-500 font-sans relative selection:bg-[#3e664c] selection:text-[#f7faf8]">
-      {/* ================= IMMERSIVE NATURE BACKGROUND ================= */}
+    <div className="min-h-screen text-foreground transition-colors duration-500 font-sans relative selection:bg-primary selection:text-primary-foreground">
+      {/* ================= IMMERSIVE NATURE BACKGROUND (EXACT 50% OPACITY) ================= */}
       <div className="fixed inset-0 pointer-events-none -z-20 overflow-hidden">
         <img
           key={natureScenes[currentSceneIdx].image}
           src={natureScenes[currentSceneIdx].image}
           alt={natureScenes[currentSceneIdx].name}
-          className="w-full h-full object-cover object-center opacity-75 dark:opacity-80 transition-opacity duration-1000 transform scale-105 zen-nature-pulse"
+          className="w-full h-full object-cover object-center opacity-50 transition-opacity duration-1000 transform scale-105 zen-nature-pulse"
         />
-        {/* Soft Vignette Overlay ensuring readability while keeping nature vivid */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 dark:from-black/55 dark:via-black/35 dark:to-black/65" />
+        {/* Balanced Wash Overlay ensuring 100% text readability in both Light and Dark modes */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#f8f7f4]/88 via-[#f8f7f4]/76 to-[#f8f7f4]/92 dark:from-black/75 dark:via-black/60 dark:to-black/82 transition-colors duration-500" />
       </div>
 
-      {/* Top Utility Bar with Glass Effect */}
-      <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-black/35 border-b border-white/15 px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4 shadow-lg">
+      {/* Top Utility Bar with High-Contrast Glass Effect */}
+      <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-background/85 dark:bg-black/55 border-b border-border px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4 shadow-sm transition-colors duration-300">
         <div className="flex items-center gap-3.5">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3e664c] via-[#4d7b5d] to-[#2d4d38] border border-white/30 flex items-center justify-center text-[#f7faf8] font-black text-base shadow-lg shadow-black/40 cursor-pointer transition-all duration-300 hover:scale-115 hover:rotate-6">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3e664c] via-[#4d7b5d] to-[#2d4d38] border border-white/25 flex items-center justify-center text-[#f7faf8] font-black text-base shadow-md cursor-pointer transition-all duration-300 hover:scale-115 hover:rotate-6">
             CY
           </div>
           <div>
-            <h1 className="text-sm font-bold tracking-tight text-white leading-none flex items-center gap-1.5 drop-shadow">
+            <h1 className="text-sm font-bold tracking-tight text-foreground leading-none flex items-center gap-1.5">
               <span>Coach Yanto</span>
-              <span className="text-[#a3c9b0] font-normal text-xs">• Mind Mastery Academy</span>
+              <span className="text-primary font-medium text-xs">• Mind Mastery Academy</span>
             </h1>
-            <p className="text-[11px] text-white/70 mt-0.5 font-normal">
-              Mental Detox Masterclass – Glassmorphism Zen
+            <p className="text-[11px] text-muted-foreground mt-0.5 font-normal">
+              Mental Detox Masterclass – Zen Glassmorphism
             </p>
           </div>
         </div>
@@ -141,8 +141,8 @@ export function App() {
         {/* View Switcher, Nature Scene Selector & Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Interactive Nature Scene Switcher */}
-          <div className="hidden md:flex items-center p-1 rounded-xl bg-black/40 border border-white/20 text-xs font-semibold backdrop-blur-md">
-            <span className="px-2 text-white/60 text-[11px] flex items-center gap-1">
+          <div className="hidden md:flex items-center p-1 rounded-xl bg-secondary/80 dark:bg-black/45 border border-border text-xs font-semibold backdrop-blur-md">
+            <span className="px-2 text-muted-foreground text-[11px] flex items-center gap-1">
               <ImageIcon className="w-3.5 h-3.5" /> Alam:
             </span>
             {natureScenes.map((scene, idx) => (
@@ -152,8 +152,8 @@ export function App() {
                 onClick={() => setCurrentSceneIdx(idx)}
                 className={`px-2.5 py-1 rounded-lg transition-all duration-200 cursor-pointer text-xs flex items-center gap-1 ${
                   currentSceneIdx === idx
-                    ? "bg-white/20 text-white font-bold shadow-sm border border-white/30"
-                    : "text-white/70 hover:text-white hover:bg-white/10"
+                    ? "bg-primary text-primary-foreground font-bold shadow-sm"
+                    : "text-foreground/80 hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10"
                 }`}
                 title={scene.name}
               >
@@ -164,14 +164,14 @@ export function App() {
           </div>
 
           {/* Mode Toggle Button */}
-          <div className="flex items-center p-1 rounded-xl bg-black/40 border border-white/20 text-xs font-semibold backdrop-blur-md">
+          <div className="flex items-center p-1 rounded-xl bg-secondary/80 dark:bg-black/45 border border-border text-xs font-semibold backdrop-blur-md">
             <button
               type="button"
               onClick={() => setActiveTab("redesign")}
               className={`px-3 py-1.5 rounded-lg transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                 activeTab === "redesign"
-                  ? "bg-gradient-to-r from-[#3e664c] to-[#4d7b5d] text-[#f7faf8] shadow-md border border-white/20"
-                  : "text-white/70 hover:text-white"
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-foreground/75 hover:text-foreground"
               }`}
             >
               <LayoutDashboard className="w-3.5 h-3.5" />
@@ -182,8 +182,8 @@ export function App() {
               onClick={() => setActiveTab("demo")}
               className={`px-3 py-1.5 rounded-lg transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                 activeTab === "demo"
-                  ? "bg-gradient-to-r from-[#3e664c] to-[#4d7b5d] text-[#f7faf8] shadow-md border border-white/20"
-                  : "text-white/70 hover:text-white"
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-foreground/75 hover:text-foreground"
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
@@ -195,12 +195,12 @@ export function App() {
             type="button"
             onClick={() => setIsDark(!isDark)}
             aria-label="Toggle Dark/Light Mode"
-            className="p-2.5 rounded-xl border border-white/20 bg-black/35 hover:bg-black/50 text-white transition-all duration-300 hover:scale-110 hover:rotate-12 cursor-pointer backdrop-blur-md"
+            className="p-2.5 rounded-xl border border-border bg-secondary/80 dark:bg-black/45 hover:bg-secondary text-foreground transition-all duration-300 hover:scale-110 hover:rotate-12 cursor-pointer backdrop-blur-md"
           >
             {isDark ? (
-              <Sun className="w-4 h-4 text-[#d4b27d]" />
+              <Sun className="w-4 h-4 text-[#c9b798]" />
             ) : (
-              <Moon className="w-4 h-4 text-[#a3c9b0]" />
+              <Moon className="w-4 h-4 text-[#3e664c]" />
             )}
           </button>
 
@@ -208,7 +208,7 @@ export function App() {
             href="https://wa.me/628118178971?text=Halo%20Coach%20Yanto%20saya%20tertarik%20dengan%20Mental%20Detox%20Masterclass"
             target="_blank"
             rel="noreferrer"
-            className="group hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#3e664c] via-[#4d7b5d] to-[#3a5d46] hover:from-[#497558] hover:via-[#598c6a] hover:to-[#426a50] text-[#f7faf8] font-semibold text-xs shadow-lg shadow-black/40 border border-white/25 transition-all duration-300"
+            className="group hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground font-semibold text-xs shadow-md border border-white/20 transition-all duration-300 hover:opacity-95"
           >
             <MessageCircle className="w-3.5 h-3.5 transition-transform duration-300 group-hover:scale-125 group-hover:-rotate-12" />
             <span>Chat WhatsApp</span>
@@ -223,13 +223,13 @@ export function App() {
         </div>
       ) : (
         <div className="relative min-h-[calc(100vh-65px)] flex flex-col lg:flex-row items-start justify-start">
-          {/* Desktop Left Glass Sidebar (True Frosted Glass) */}
+          {/* Desktop Left Glass Sidebar */}
           <aside className="hidden lg:block sticky top-[76px] h-[calc(100vh-92px)] p-4 flex-shrink-0 z-40">
             <LiquidGlassExpandableSidebar
               groups={masterclassGroups}
               brand="Mind Mastery"
               brandDetail="Executive Coaching"
-              brandIcon={<Brain className="w-4 h-4 text-[#a3c9b0]" />}
+              brandIcon={<Brain className="w-4 h-4 text-primary" />}
               account={{
                 id: "coach",
                 name: "Coach Yanto",
@@ -241,13 +241,13 @@ export function App() {
               onNavigate={handleNavigate}
               defaultExpanded={true}
               theme={isDark ? "dark" : "light"}
-              accent="#a3c9b0"
+              accent={isDark ? "#6ea380" : "#3e664c"}
               glass={{
-                blur: 28,
-                opacity: 0.16,
-                saturation: 1.4,
-                edge: 0.88,
-                distortion: 25,
+                blur: 24,
+                opacity: isDark ? 0.2 : 0.7,
+                saturation: 1.35,
+                edge: 0.85,
+                distortion: 22,
               }}
             />
           </aside>

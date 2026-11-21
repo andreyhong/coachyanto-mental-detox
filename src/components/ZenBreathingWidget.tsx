@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Wind, Play, Pause, RotateCcw, Sparkles } from "lucide-react";
+import { Wind, Play, Pause, RotateCcw } from "lucide-react";
 
 export function ZenBreathingWidget() {
   const [isActive, setIsActive] = useState(false);
@@ -49,18 +49,18 @@ export function ZenBreathingWidget() {
   return (
     <div className="w-full max-w-4xl mx-auto my-8 p-6 sm:p-8 rounded-3xl zen-glass zen-glass-shimmer relative overflow-hidden group">
       {/* Background Soft Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#6c9a7d]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-2 text-center md:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 dark:bg-black/30 border border-white/20 text-xs font-semibold text-[#a3c9b0]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 dark:bg-black/30 border border-primary/20 dark:border-white/20 text-xs font-semibold text-primary dark:text-[#a3c9b0]">
             <Wind className="w-3.5 h-3.5" />
             <span>Interactive Clarity Tool</span>
           </div>
           <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
             Latihan Relaksasi Saraf 4-7-8
           </h3>
-          <p className="text-xs sm:text-sm text-muted-foreground max-w-md">
+          <p className="text-xs sm:text-sm text-foreground/85 max-w-md font-normal">
             Teknik pernapasan parasimpatis untuk menurunkan denyut jantung dan memutus sinyal panik overthinking dalam 60 detik.
           </p>
         </div>
@@ -70,12 +70,12 @@ export function ZenBreathingWidget() {
           <div className="relative flex items-center justify-center w-36 h-36">
             {/* Outer Ripple Rings */}
             <div
-              className={`absolute inset-0 rounded-full border border-[#8fb49c]/40 transition-transform ease-in-out ${getCircleScale()} ${
+              className={`absolute inset-0 rounded-full border border-primary/30 transition-transform ease-in-out ${getCircleScale()} ${
                 isActive ? "opacity-100" : "opacity-40"
               }`}
             />
             <div
-              className={`absolute inset-3 rounded-full border border-dashed border-[#d4b27d]/40 transition-transform ease-in-out ${getCircleScale()} ${
+              className={`absolute inset-3 rounded-full border border-dashed border-accent/40 transition-transform ease-in-out ${getCircleScale()} ${
                 isActive ? "opacity-100 animate-spin [animation-duration:20s]" : "opacity-30"
               }`}
             />
@@ -83,7 +83,7 @@ export function ZenBreathingWidget() {
             {/* Core Orb */}
             <div
               className={`w-24 h-24 rounded-full zen-glass flex flex-col items-center justify-center transition-all ease-in-out shadow-lg ${getCircleScale()} ${
-                isActive ? "border-[#8fb49c]/80 shadow-[0_0_30px_rgba(143,180,156,0.35)]" : ""
+                isActive ? "border-primary shadow-[0_0_25px_rgba(110,163,128,0.35)]" : ""
               }`}
             >
               <span className="text-2xl font-black text-foreground">{secondsLeft}s</span>
@@ -93,7 +93,7 @@ export function ZenBreathingWidget() {
             </div>
           </div>
 
-          <div className="text-xs font-semibold text-center text-[#a3c9b0]">
+          <div className="text-xs font-semibold text-center text-primary dark:text-[#a3c9b0]">
             {phase} • Siklus: {cycleCount}
           </div>
 
@@ -102,7 +102,7 @@ export function ZenBreathingWidget() {
             <button
               type="button"
               onClick={() => setIsActive(!isActive)}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#3e664c] to-[#4d7b5d] hover:from-[#497558] hover:to-[#598c6a] text-[#f7faf8] text-xs font-bold shadow-md shadow-[#1e3325]/40 border border-[#6ea07d]/40 flex items-center gap-1.5 transition-all duration-200 cursor-pointer hover:scale-105"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#3e664c] to-[#4d7b5d] hover:from-[#497558] hover:to-[#598c6a] text-[#f7faf8] text-xs font-bold shadow-md shadow-[#1e3325]/40 border border-white/20 flex items-center gap-1.5 transition-all duration-200 cursor-pointer hover:scale-105"
             >
               {isActive ? (
                 <>
@@ -117,7 +117,7 @@ export function ZenBreathingWidget() {
             <button
               type="button"
               onClick={handleReset}
-              className="p-2 rounded-xl zen-glass hover:bg-white/10 text-muted-foreground hover:text-foreground transition-all duration-200 cursor-pointer hover:scale-105"
+              className="p-2 rounded-xl zen-glass hover:bg-black/10 dark:hover:bg-white/10 text-foreground transition-all duration-200 cursor-pointer hover:scale-105"
               title="Reset"
             >
               <RotateCcw className="w-3.5 h-3.5" />
